@@ -76,8 +76,8 @@ class SinglyLinkedList {
 
     /**
      * Determines if this list is empty.
-     * - Time: O(?).
-     * - Space: O(?).
+     * - Time: O(1).
+     * - Space: O(1).
      * @returns {boolean}
      */
     isEmpty() {
@@ -92,8 +92,8 @@ class SinglyLinkedList {
     /**
      * Creates a new node with the given data and inserts it at the back of
      * this list.
-     * - Time: O(?).
-     * - Space: O(?).
+     * - Time: O(n) - n = number of nodes in the singly linked list.
+     * - Space: O(1).
      * @param {any} data The data to be added to the new node.
      * @returns {SinglyLinkedList} This list.
      */
