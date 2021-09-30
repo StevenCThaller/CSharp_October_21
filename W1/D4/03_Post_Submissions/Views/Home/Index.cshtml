@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's This? A Form?</title>
+</head>
+<body>
+    <h1>Let's Make a Taco</h1>
+    <form action="/taco/create" method="post">
+        <div>
+            <label for="cheese">Cheese: </label>
+            <input type="text" name="cheese" id="cheese">
+        </div>
+        <p>Tortilla</p>
+        <div>
+            <label for="flour">Flour </label>
+            <input type="radio" name="tortilla" id="flour" value="flour">
+            <label for="corn">Corn</label>
+            <input type="radio" name="tortilla" id="corn" value="corn">
+        </div>
+        <div>
+            <label for="protein">Protein:</label>
+            <select name="protein" id="protein">
+                <option value="steak">Steak</option>
+                <option value="chicken">Chicken</option>
+                <option value="carnitas">Carnitas</option>
+                <option value="veg">Vegetarian</option>
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</body>
+</html>
