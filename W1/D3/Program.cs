@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _02_Console_Readline_Example
+namespace D3
 {
     class Program
     {
