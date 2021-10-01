@@ -1,0 +1,21 @@
+@* @using _01_View_Models.Models
+@model Taco *@
+@* This NEEDS to be lowercase model *@
+
+@* 1 line alternative for importing our model *@
+@model _01_View_Models.Models.Taco
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>thanks for your taco info!!</h1>
+    <p>Cheese: @Model.cheese</p>
+    <p>Tortilla: @Model.tortilla</p>
+    <p>Protein: @Model.protein</p>
+</body>
+</html>

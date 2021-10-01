@@ -1,0 +1,71 @@
+@model _01_View_Models.Models.Taco
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>it taco time</h1>
+
+    @* <form action="/taco/create" method="post">
+        <div>
+            <label for="cheese">Cheese: </label>
+            <input type="text" name="cheese" id="cheese">
+        </div>
+        <p>Tortilla: </p>
+        <div>
+            <label for="flour">Flour</label>
+            <input type="radio" name="tortilla" id="flour" value="flour">
+            <label for="corn">Corn</label>
+            <input type="radio" name="tortilla" id="corn" value="corn">
+        </div>
+        <div>
+            <label for="protein">Protein: </label>
+            <select name="protein" id="protein">
+                <option value="beef">Beef</option>
+                <option value="steak">Steak</option>
+                <option value="chicken">Chicken</option>
+                <option value="vegetables">Vegetables</option>
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form> *@
+
+    <form asp-action="CreateTaco" asp-controller="Home">
+        <span asp-validation-for="cheese"></span>
+        <div>
+            <label asp-for="cheese"></label>
+            <input asp-for="cheese">
+        </div>
+        <p>Tortilla: </p>
+        <span asp-validation-for="tortilla"></span>
+        <div>
+            <label for="flour">Flour</label>
+            @Html.RadioButton("tortilla", "flour")
+            <label for="corn">Corn</label>
+            @Html.RadioButton("tortilla", "corn")
+            @* <input type="radio" name="tortilla" id="flour" value="flour"> *@
+            @* <input type="radio" name="tortilla" id="corn" value="corn"> *@
+        </div>
+        <span asp-validation-for="protein"></span>
+        <div>
+            <label asp-for="protein"></label>
+            <select asp-for="protein">
+                <option value="beef">Beef</option>
+                <option value="steak">Steak</option>
+                <option value="chicken">Chicken</option>
+                <option value="vegetables">Vegetables</option>
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</body>
+</html>
