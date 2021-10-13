@@ -1,0 +1,30 @@
+@model _01_Belt_Prep.Models.Review
+
+<form asp-action="CreateReview" asp-controller="FoodTruck" class="row col-8 offset-2">
+    <div class="col-8 form-group row">
+        <span class="col-12 text-danger" asp-validation-for="Text"></span>
+        <label asp-for="Text" class="col-4"></label>
+        <div class="form-group col-8">
+            <textarea asp-for="Text" class="form-control"></textarea>
+        </div>
+    </div>
+    <div class="col-4 row">
+        <div class="form-group row">
+            <span class="col-12 text-danger" asp-validation-for="Rating"></span>
+            <label asp-for="Rating" class="col-4"></label>
+            <div class="form-group col-8">
+                <select asp-for="Rating" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3" selected>3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <a href="/trucks" class="offset-4">Cancel</a>&nbsp;
+            <input type="submit" value="Submit" class="col-3 btn btn-primary">
+        </div>
+    </div>
+</form>
