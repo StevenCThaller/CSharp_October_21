@@ -362,7 +362,7 @@ class BinarySearchTree {
             If the current node is null, either we're at the end of a branch,
             or the root is null, so we can't really do anything but shoot vals back up.
         */
-        if(!node) {
+        if (!node) {
             return vals;
         }
 
@@ -397,7 +397,7 @@ class BinarySearchTree {
      * @returns {Array<number>} The vals in DFS Preorder once all nodes visited.
      */
     toArrInorder(node = this.root, vals = []) {
-        if(!node) {
+        if (!node) {
             return vals;
         }
 
@@ -433,7 +433,7 @@ class BinarySearchTree {
      * @returns {Array<number>} The vals in DFS Preorder once all nodes visited.
      */
     toArrPostorder(node = this.root, vals = []) {
-        if(!node) {
+        if (!node) {
             return vals;
         }
 
@@ -454,6 +454,106 @@ class BinarySearchTree {
         this.toArrPostorder(node.right, vals);
         vals.push(node.data);
         return vals;
+    }
+
+    /**
+     * BFS order: horizontal rows top-down left-to-right.
+     * Converts this BST into an array following Breadth First Search order.
+     * Example on the fullTree var:
+     * [25, 15, 50, 10, 22, 35, 70, 4, 12, 18, 24, 31, 44, 66, 90]
+     * @param {Node} current The current node during the traversal of this tree.
+     * @returns {Array<number>} The data of all nodes in BFS order.
+     */
+    toArrLevelorder(current = this.root) { 
+        const queue = [];
+        const vals = [];
+
+        if(current){
+            queue.push(current);
+        }
+
+        while(queue.length > 0) {
+            const dequeuedNode = queue[0];
+            
+            for(let i = 1; i < queue.length; i++) {
+                let temp = queue[i-1];
+                queue[i-1] = queue[i];
+                queue[i] = temp;
+            }
+            queue.pop();
+
+            vals.push(dequeuedNode.data);
+
+            if(dequeuedNode.left) {
+                queue.push(dequeuedNode.left);
+            }
+
+            if(dequeuedNode.right) {
+                queue.push(dequeuedNode.right);
+            }
+        }
+
+        return vals;
+    }
+
+    /**
+     * Recursively counts the total number of nodes in this tree.
+     * - Time: O(n) - Linear, where n = total number of nodes.
+     * - Space: O(h) - Linear, where h = height .
+     * @param {Node} node The current node during the traversal of this tree.
+     * @returns {number} The total number of nodes.
+     */
+    size(node = this.root, size = 0) { 
+        if(!node) {
+            return size;
+        }
+
+        size++;
+        size = this.size(node.left, size);
+        return this.size(node.right, size);
+    }
+
+    /**
+     * Calculates the height of the tree which is based on how many nodes from
+     * top to bottom (whichever side is taller).
+     * - Time: O(n) - Linear, where n = the number of nodes in the tree.
+     * - Space: O(h) - Linear, where h = the height of the tallest sub-tree.
+     * @param {Node} node The current node during traversal of this tree.
+     * @returns {number} The height of the tree.
+     */
+    height(node = this.root, maxHeight = 0) { 
+        if(!node) {
+            return maxHeight;
+        }
+        maxHeight++;
+
+        let leftHeight = this.height(node.left, maxHeight);
+        let rightHeight = this.height(node.right, maxHeight);
+
+        if(leftHeight > maxHeight) {
+            maxHeight = leftHeight;
+        } else if(rightHeight > maxHeight) {
+            maxHeight = rightHeight;
+        }
+
+        return maxHeight;
+    }
+
+    /**
+     * Determines if this tree is a full tree. A full tree is a tree where every
+     * node has both a left and a right except for the leaf nodes (last nodes)
+     * - Time: O(n) - Linear, where n = the number of nodes in the tree.
+     * - Space: O(h) - Linear, where h = the height of the tallest sub-tree.
+     * @param {Node} node The current node during traversal of this tree.
+     * @returns {boolean} Indicates if this tree is full.
+     */
+    isFull(node = this.root) { 
+        if((node.left && !node.right) || (!node.left && node.right)) {
+            return false;
+        }
+
+        if(!this.isFull(node.left)) return false;
+        return this.isFull(node.right);
     }
 }
 

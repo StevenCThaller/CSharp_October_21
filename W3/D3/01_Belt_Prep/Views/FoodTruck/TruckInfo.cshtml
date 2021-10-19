@@ -15,10 +15,10 @@
     <div class="container">
         <h1>Food Truck</h1>
         <div class="row">
-            <h2>@Model.Name &#10084; @Model.FavoritedBy</h2>
-            <p>Style: @Model.Style</p>
-            <p>Description: @Model.Description</p>
-            <p>Average Rating: @Model.AverageRating.ToString("0.0")</p>
+            <h2>@Model.Truck.Name &#10084; @Model.Truck.FavoritedBy.Count</h2>
+            <p>Style: @Model.Truck.Style</p>
+            <p>Description: @Model.Truck.Description</p>
+            <p>Average Rating: @Model.Truck.AverageRating.ToString("0.0")</p>
         </div>
         <div class="row scrollable">
             @foreach(var review in Model.Truck.Reviews)
